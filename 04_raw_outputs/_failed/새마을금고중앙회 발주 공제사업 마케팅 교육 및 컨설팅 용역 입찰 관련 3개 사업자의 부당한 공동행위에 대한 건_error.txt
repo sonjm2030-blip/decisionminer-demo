@@ -1,0 +1,3 @@
+[2026-04-29 22:22:17] facts failed after retries
+[2026-04-29 22:33:59] facts failed after retries
+[2026-04-29 22:45:37] unhandled exception: FileNotFoundError: [Errno 2] No such file or directory: '/Users/sonjongmyeong/Desktop/2026 공정위 공모전/decisionminer_project/04_raw_outputs/새마을금고중앙회 발주 공제사업 마케팅 교육 및 컨설팅 용역 입찰 관련 3개 사업자의 부당한 공동행위에 대한 건/facts.json'

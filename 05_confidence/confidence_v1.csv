@@ -1,0 +1,4 @@
+﻿case_id,path,law_match,evidence_consistency,five_elements,persona_tone,total,grade
+v2_시범_거래상지위,04_raw_outputs/v2_시범_거래상지위/step1_step2.json,1.0,1.0,1.0,1.0,1.0,GREEN
+v2_시범_전자상거래,04_raw_outputs/v2_시범_전자상거래/step1_step2.json,1.0,1.0,1.0,1.0,1.0,GREEN
+v2_시범_표시광고,04_raw_outputs/v2_시범_표시광고/step1_step2.json,1.0,0.9565,1.0,1.0,0.987,GREEN
