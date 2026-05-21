@@ -17,6 +17,7 @@ from datetime import datetime
 from pathlib import Path
 
 import streamlit as st
+import pandas as pd
 
 
 # ============================ CONFIG ============================
@@ -38,6 +39,11 @@ def get_data_root():
 
 DATA_ROOT  = get_data_root()
 RAW_DIR    = DATA_ROOT / "04_raw_outputs"
+
+# 자동 품질진단 결과 CSV (검수 시연용)
+QC_CSV_PATH = Path(__file__).resolve().parent.parent / "11_data_quality" / "qc_result_990_v2.csv"
+if not QC_CSV_PATH.exists():
+    QC_CSV_PATH = Path(__file__).resolve().parent / "data" / "qc_result_990_v2.csv"
 TIER1_DIR  = DATA_ROOT / "11_data_quality" / "tier1_ai_auto"
 XLSX_DIR   = DATA_ROOT / "05_xlsx"
 PROMPT_DIR = DATA_ROOT / "03_prompts" / "v2"
@@ -316,7 +322,7 @@ def load_all_case_types() -> dict:
 def find_xlsx_for_download():
     """다운로드 대상 xlsx — 우선순위 적용"""
     # 1순위: 정확한 파일명
-    primary = XLSX_DIR / "학습데이터_설계서_구조_v3.4.xlsx"
+    primary = XLSX_DIR / "학습데이터_설계서_DecisionMiner_v2_6.xlsx"
     if primary.exists():
         return primary
 
@@ -591,6 +597,8 @@ def render_cached_results():
 
 def page_pdf_analysis():
     st.header("📄 의결서 PDF 분해")
+    st.info("ℹ️ 라이브 분해는 Step 1·2 시각화 시연용. 풀 5단 분해 + 자동 품질진단 결과는 22건 캐시 탭에서 확인 가능")
+
     tab_a, tab_b = st.tabs(["22건 캐시 결과", "새 PDF 실시간 분해"])
 
     with tab_a:
