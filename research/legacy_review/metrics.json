@@ -1,0 +1,324 @@
+{
+  "status": "retrospective_calibration_analysis_no_new_labels_or_model_calls",
+  "baseline_commit": "74135adccfc916b164546c7d6db0e50c170657d5",
+  "inputs_sha256": {
+    "releases/reviewer_100.xlsx": "6fbaa0ca0d9fe05db83434314e18b6405830d04900700e7a7ceeec4b6ca8a940",
+    "releases/competition_final.xlsx": "11f31566e2b2e1caf6f7722c63dec9e47c37923de99f1035fae943c5c802001b",
+    "11_data_quality/qa_evaluated_990.csv": "a2ed888fc04433d1df4104b721fe8b85438aaee6a31f3c533eba0d8712aea707",
+    "qa_corrections_100.csv": "a0d2a81a9054305e4d68c9d007b60867ddfb3b526d935193c81807670c56cb4b",
+    "09_code/quality_checker_grounding.py": "8b1fcf951ce0d45f3909704a460a45e13cc93dbc300c8732c626c82f4af5ea43"
+  },
+  "analysis_code_sha256": "bdf72f5c9361668333f798b58940a4b0783c7ed3cbe40b0cf02b30d5f99184b6",
+  "human_records": 100,
+  "human_labels": {
+    "OK": 37,
+    "보정 필요": 61,
+    "환각": 2
+  },
+  "correction_texts": 66,
+  "memos": 67,
+  "confidence_missing": 1,
+  "confidence_values": {
+    "4": 36,
+    "3": 41,
+    "2": 20,
+    "1": 2,
+    "None": 1
+  },
+  "correction_export_rows": 63,
+  "correction_export_exact_matches": 63,
+  "OK_with_proposed_corrections": [
+    "QA-남양-001",
+    "QA-남양-002",
+    "QA-신세계-005"
+  ],
+  "duplicate_correction_groups": [
+    [
+      "QA-롯데-002",
+      "QA-에스피피-002"
+    ]
+  ],
+  "held_correction_texts": 2,
+  "non_OK_correction_candidates": 61,
+  "replay_records": 79,
+  "replay_human_labels": {
+    "OK": 32,
+    "보정 필요": 46,
+    "환각": 1
+  },
+  "excluded_records": 21,
+  "excluded_ids": [
+    "QA-네이버-004",
+    "QA-남양-001",
+    "QA-남양-002",
+    "QA-동원건설-001",
+    "QA-동원건설-002",
+    "QA-롯데-001",
+    "QA-롯데-002",
+    "QA-새마을-001",
+    "QA-새마을-002",
+    "QA-에스피피-001",
+    "QA-에스피피-002",
+    "QA-조달청-001",
+    "QA-조달청-002",
+    "QA-비에이치씨-002",
+    "QA-비에이치씨-003",
+    "QA-비에이치씨-004",
+    "QA-비에이치씨-005",
+    "QA-신세계-002",
+    "QA-신세계-003",
+    "QA-신세계-004",
+    "QA-신세계-005"
+  ],
+  "shared_fields_required": [
+    "페르소나",
+    "사건유형",
+    "적용법령",
+    "적용조문",
+    "질문",
+    "답변"
+  ],
+  "context_provenance": "Evidence, question type and difficulty restored from frozen master; original review form does not contain the same fields. Full historical context equivalence is not established.",
+  "prediction_inputs_exclude": [
+    "human label",
+    "human confidence",
+    "memo",
+    "correction",
+    "final static labels"
+  ],
+  "category_mapping": {
+    "OK": "적합",
+    "보정 필요": "검토",
+    "환각": "부적합"
+  },
+  "category_semantics": "Analytic proxy: rule warnings are not identical to legal correctness.",
+  "evaluation_order": [
+    "적합",
+    "검토",
+    "부적합"
+  ],
+  "metrics": {
+    "always_review": {
+      "n": 79,
+      "strict_matches": 46,
+      "strict_agreement": 0.5822784810126582,
+      "balanced_accuracy": 0.3333333333333333,
+      "macro_f1": 0.24533333333333332,
+      "cohen_kappa": 0.0,
+      "per_class": {
+        "적합": {
+          "support": 32,
+          "predicted": 0,
+          "true_positive": 0,
+          "precision": null,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "검토": {
+          "support": 46,
+          "predicted": 79,
+          "true_positive": 46,
+          "precision": 0.5822784810126582,
+          "recall": 1.0,
+          "f1": 0.736
+        },
+        "부적합": {
+          "support": 1,
+          "predicted": 0,
+          "true_positive": 0,
+          "precision": null,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      },
+      "confusion_rows_human_cols_rule": [
+        [
+          0,
+          32,
+          0
+        ],
+        [
+          0,
+          46,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ]
+      ],
+      "usable_binary_matches": 78,
+      "needs_review_detection": {
+        "tp": 47,
+        "fp": 32,
+        "fn": 0,
+        "tn": 0,
+        "precision": 0.5949367088607594,
+        "recall": 1.0,
+        "routed_count": 79
+      }
+    },
+    "text_grounding": {
+      "n": 79,
+      "strict_matches": 16,
+      "strict_agreement": 0.20253164556962025,
+      "balanced_accuracy": 0.1476449275362319,
+      "macro_f1": 0.20089439284485722,
+      "cohen_kappa": 0.01988972036234739,
+      "per_class": {
+        "적합": {
+          "support": 32,
+          "predicted": 19,
+          "true_positive": 10,
+          "precision": 0.5263157894736842,
+          "recall": 0.3125,
+          "f1": 0.39215686274509803
+        },
+        "검토": {
+          "support": 46,
+          "predicted": 11,
+          "true_positive": 6,
+          "precision": 0.5454545454545454,
+          "recall": 0.13043478260869565,
+          "f1": 0.21052631578947367
+        },
+        "부적합": {
+          "support": 1,
+          "predicted": 49,
+          "true_positive": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      },
+      "confusion_rows_human_cols_rule": [
+        [
+          10,
+          4,
+          18
+        ],
+        [
+          9,
+          6,
+          31
+        ],
+        [
+          0,
+          1,
+          0
+        ]
+      ],
+      "usable_binary_matches": 29,
+      "needs_review_detection": {
+        "tp": 38,
+        "fp": 22,
+        "fn": 9,
+        "tn": 10,
+        "precision": 0.6333333333333333,
+        "recall": 0.8085106382978723,
+        "routed_count": 60
+      }
+    },
+    "structured_grounding": {
+      "n": 79,
+      "strict_matches": 43,
+      "strict_agreement": 0.5443037974683544,
+      "balanced_accuracy": 0.375,
+      "macro_f1": 0.36476964769647696,
+      "cohen_kappa": 0.11374259894047992,
+      "per_class": {
+        "적합": {
+          "support": 32,
+          "predicted": 43,
+          "true_positive": 20,
+          "precision": 0.46511627906976744,
+          "recall": 0.625,
+          "f1": 0.5333333333333333
+        },
+        "검토": {
+          "support": 46,
+          "predicted": 36,
+          "true_positive": 23,
+          "precision": 0.6388888888888888,
+          "recall": 0.5,
+          "f1": 0.5609756097560976
+        },
+        "부적합": {
+          "support": 1,
+          "predicted": 0,
+          "true_positive": 0,
+          "precision": null,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      },
+      "confusion_rows_human_cols_rule": [
+        [
+          20,
+          12,
+          0
+        ],
+        [
+          23,
+          23,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ]
+      ],
+      "usable_binary_matches": 78,
+      "needs_review_detection": {
+        "tp": 24,
+        "fp": 12,
+        "fn": 23,
+        "tn": 20,
+        "precision": 0.6666666666666666,
+        "recall": 0.5106382978723404,
+        "routed_count": 36
+      }
+    }
+  },
+  "paired_proposed_answer_diagnostic": {
+    "검토→적합": 2,
+    "적합→검토": 15,
+    "검토→검토": 22,
+    "적합→적합": 7,
+    "적합→부적합": 1
+  },
+  "review_budget_proxy": [
+    {
+      "budget_items": 10,
+      "expected_needs_review_found": 9.555555555555555,
+      "tie_min": 9,
+      "tie_max": 10,
+      "random_expected": 5.949367088607595
+    },
+    {
+      "budget_items": 20,
+      "expected_needs_review_found": 15.11111111111111,
+      "tie_min": 9,
+      "tie_max": 20,
+      "random_expected": 11.89873417721519
+    },
+    {
+      "budget_items": 40,
+      "expected_needs_review_found": 26.13953488372093,
+      "tie_min": 24,
+      "tie_max": 28,
+      "random_expected": 23.79746835443038
+    },
+    {
+      "budget_items": 60,
+      "expected_needs_review_found": 36.83720930232558,
+      "tie_min": 28,
+      "tie_max": 47,
+      "random_expected": 35.69620253164557
+    }
+  ],
+  "budget_policy": "Descending (tier index, block count, warning count); exact expected yield under uniform ties. No label, memo, correction or human confidence used in ranking. One item assumed equal effort; not monetary/time savings.",
+  "scope": "Previously used calibration sample; descriptive only, not independent generalization or expert certification."
+}
