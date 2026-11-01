@@ -1,0 +1,781 @@
+{
+  "scope": "Development-only retrospective comparison; rubric developer previously saw all 79 records.",
+  "evaluation_code_sha256": "5ce98f4c3c30648accd605ce59b9404827866d6266bedfd7a38cfc9d878b7711",
+  "n": 79,
+  "arms": {
+    "generic": {
+      "n": 79,
+      "predictions": {
+        "적합": 29,
+        "출력검증실패": 20,
+        "검토": 29,
+        "판단보류": 1
+      },
+      "definite_count": 58,
+      "coverage": 0.7341772151898734,
+      "matching_definite_over_all": 0.5316455696202531,
+      "matching_count": 42,
+      "conditional_metrics_on_decided_subset": {
+        "n": 58,
+        "strict_matches": 42,
+        "strict_agreement": 0.7241379310344828,
+        "balanced_accuracy": 0.7252090800477897,
+        "macro_f1": 0.7238095238095238,
+        "cohen_kappa": 0.4482758620689655,
+        "per_class": {
+          "적합": {
+            "support": 27,
+            "predicted": 29,
+            "true_positive": 20,
+            "precision": 0.6896551724137931,
+            "recall": 0.7407407407407407,
+            "f1": 0.7142857142857143
+          },
+          "검토": {
+            "support": 31,
+            "predicted": 29,
+            "true_positive": 22,
+            "precision": 0.7586206896551724,
+            "recall": 0.7096774193548387,
+            "f1": 0.7333333333333333
+          },
+          "부적합": {
+            "support": 0,
+            "predicted": 0,
+            "true_positive": 0,
+            "precision": null,
+            "recall": null,
+            "f1": null
+          }
+        },
+        "confusion_rows_human_cols_rule": [
+          [
+            20,
+            7,
+            0
+          ],
+          [
+            9,
+            22,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        "usable_binary_matches": 58,
+        "needs_review_detection": {
+          "tp": 22,
+          "fp": 7,
+          "fn": 9,
+          "tn": 20,
+          "precision": 0.7586206896551724,
+          "recall": 0.7096774193548387,
+          "routed_count": 29
+        }
+      },
+      "confusion_columns": [
+        "적합",
+        "검토",
+        "부적합",
+        "판단보류",
+        "출력검증실패",
+        "미실행"
+      ],
+      "confusion_rows_human": [
+        [
+          20,
+          7,
+          0,
+          1,
+          4,
+          0
+        ],
+        [
+          9,
+          22,
+          0,
+          0,
+          15,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ]
+      ]
+    },
+    "rubric": {
+      "n": 79,
+      "predictions": {
+        "적합": 23,
+        "검토": 32,
+        "출력검증실패": 22,
+        "판단보류": 2
+      },
+      "definite_count": 55,
+      "coverage": 0.6962025316455697,
+      "matching_definite_over_all": 0.5316455696202531,
+      "matching_count": 42,
+      "conditional_metrics_on_decided_subset": {
+        "n": 55,
+        "strict_matches": 42,
+        "strict_agreement": 0.7636363636363637,
+        "balanced_accuracy": 0.7599469496021221,
+        "macro_f1": 0.7607895617263298,
+        "cohen_kappa": 0.523015343562375,
+        "per_class": {
+          "적합": {
+            "support": 26,
+            "predicted": 23,
+            "true_positive": 18,
+            "precision": 0.782608695652174,
+            "recall": 0.6923076923076923,
+            "f1": 0.7346938775510204
+          },
+          "검토": {
+            "support": 29,
+            "predicted": 32,
+            "true_positive": 24,
+            "precision": 0.75,
+            "recall": 0.8275862068965517,
+            "f1": 0.7868852459016393
+          },
+          "부적합": {
+            "support": 0,
+            "predicted": 0,
+            "true_positive": 0,
+            "precision": null,
+            "recall": null,
+            "f1": null
+          }
+        },
+        "confusion_rows_human_cols_rule": [
+          [
+            18,
+            8,
+            0
+          ],
+          [
+            5,
+            24,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        "usable_binary_matches": 55,
+        "needs_review_detection": {
+          "tp": 24,
+          "fp": 8,
+          "fn": 5,
+          "tn": 18,
+          "precision": 0.75,
+          "recall": 0.8275862068965517,
+          "routed_count": 32
+        }
+      },
+      "confusion_columns": [
+        "적합",
+        "검토",
+        "부적합",
+        "판단보류",
+        "출력검증실패",
+        "미실행"
+      ],
+      "confusion_rows_human": [
+        [
+          18,
+          8,
+          0,
+          2,
+          4,
+          0
+        ],
+        [
+          5,
+          24,
+          0,
+          0,
+          17,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ]
+      ]
+    }
+  },
+  "rule_baseline": {
+    "n": 79,
+    "strict_matches": 43,
+    "strict_agreement": 0.5443037974683544,
+    "balanced_accuracy": 0.375,
+    "macro_f1": 0.36476964769647696,
+    "cohen_kappa": 0.11374259894047992,
+    "per_class": {
+      "적합": {
+        "support": 32,
+        "predicted": 43,
+        "true_positive": 20,
+        "precision": 0.46511627906976744,
+        "recall": 0.625,
+        "f1": 0.5333333333333333
+      },
+      "검토": {
+        "support": 46,
+        "predicted": 36,
+        "true_positive": 23,
+        "precision": 0.6388888888888888,
+        "recall": 0.5,
+        "f1": 0.5609756097560976
+      },
+      "부적합": {
+        "support": 1,
+        "predicted": 0,
+        "true_positive": 0,
+        "precision": null,
+        "recall": 0.0,
+        "f1": 0.0
+      }
+    },
+    "confusion_rows_human_cols_rule": [
+      [
+        20,
+        12,
+        0
+      ],
+      [
+        23,
+        23,
+        0
+      ],
+      [
+        0,
+        1,
+        0
+      ]
+    ],
+    "usable_binary_matches": 78,
+    "needs_review_detection": {
+      "tp": 24,
+      "fp": 12,
+      "fn": 23,
+      "tn": 20,
+      "precision": 0.6666666666666666,
+      "recall": 0.5106382978723404,
+      "routed_count": 36
+    }
+  },
+  "all_review_baseline": {
+    "n": 79,
+    "strict_matches": 46,
+    "strict_agreement": 0.5822784810126582,
+    "balanced_accuracy": 0.3333333333333333,
+    "macro_f1": 0.24533333333333332,
+    "cohen_kappa": 0.0,
+    "per_class": {
+      "적합": {
+        "support": 32,
+        "predicted": 0,
+        "true_positive": 0,
+        "precision": null,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "검토": {
+        "support": 46,
+        "predicted": 79,
+        "true_positive": 46,
+        "precision": 0.5822784810126582,
+        "recall": 1.0,
+        "f1": 0.736
+      },
+      "부적합": {
+        "support": 1,
+        "predicted": 0,
+        "true_positive": 0,
+        "precision": null,
+        "recall": 0.0,
+        "f1": 0.0
+      }
+    },
+    "confusion_rows_human_cols_rule": [
+      [
+        0,
+        32,
+        0
+      ],
+      [
+        0,
+        46,
+        0
+      ],
+      [
+        0,
+        1,
+        0
+      ]
+    ],
+    "usable_binary_matches": 78,
+    "needs_review_detection": {
+      "tp": 47,
+      "fp": 32,
+      "fn": 0,
+      "tn": 0,
+      "precision": 0.5949367088607594,
+      "recall": 1.0,
+      "routed_count": 79
+    }
+  },
+  "paired_common_definite_count": 47,
+  "paired_common_definite_metrics": {
+    "generic": {
+      "n": 47,
+      "strict_matches": 36,
+      "strict_agreement": 0.7659574468085106,
+      "balanced_accuracy": 0.7644927536231885,
+      "macro_f1": 0.7642498860009119,
+      "cohen_kappa": 0.5304268846503178,
+      "per_class": {
+        "적합": {
+          "support": 24,
+          "predicted": 27,
+          "true_positive": 20,
+          "precision": 0.7407407407407407,
+          "recall": 0.8333333333333334,
+          "f1": 0.7843137254901961
+        },
+        "검토": {
+          "support": 23,
+          "predicted": 20,
+          "true_positive": 16,
+          "precision": 0.8,
+          "recall": 0.6956521739130435,
+          "f1": 0.7441860465116279
+        },
+        "부적합": {
+          "support": 0,
+          "predicted": 0,
+          "true_positive": 0,
+          "precision": null,
+          "recall": null,
+          "f1": null
+        }
+      },
+      "confusion_rows_human_cols_rule": [
+        [
+          20,
+          4,
+          0
+        ],
+        [
+          7,
+          16,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "usable_binary_matches": 47,
+      "needs_review_detection": {
+        "tp": 16,
+        "fp": 4,
+        "fn": 7,
+        "tn": 20,
+        "precision": 0.8,
+        "recall": 0.6956521739130435,
+        "routed_count": 20
+      }
+    },
+    "rubric": {
+      "n": 47,
+      "strict_matches": 35,
+      "strict_agreement": 0.7446808510638298,
+      "balanced_accuracy": 0.7454710144927537,
+      "macro_f1": 0.7445652173913043,
+      "cohen_kappa": 0.4900542495479204,
+      "per_class": {
+        "적합": {
+          "support": 24,
+          "predicted": 22,
+          "true_positive": 17,
+          "precision": 0.7727272727272727,
+          "recall": 0.7083333333333334,
+          "f1": 0.7391304347826086
+        },
+        "검토": {
+          "support": 23,
+          "predicted": 25,
+          "true_positive": 18,
+          "precision": 0.72,
+          "recall": 0.782608695652174,
+          "f1": 0.75
+        },
+        "부적합": {
+          "support": 0,
+          "predicted": 0,
+          "true_positive": 0,
+          "precision": null,
+          "recall": null,
+          "f1": null
+        }
+      },
+      "confusion_rows_human_cols_rule": [
+        [
+          17,
+          7,
+          0
+        ],
+        [
+          5,
+          18,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "usable_binary_matches": 47,
+      "needs_review_detection": {
+        "tp": 18,
+        "fp": 7,
+        "fn": 5,
+        "tn": 17,
+        "precision": 0.72,
+        "recall": 0.782608695652174,
+        "routed_count": 25
+      }
+    }
+  },
+  "paired_full79_matching_counts": {
+    "both": 30,
+    "generic_only": 12,
+    "rubric_only": 12,
+    "neither": 25
+  },
+  "hybrid_simulation": {
+    "generic": {
+      "metrics": {
+        "n": 79,
+        "strict_matches": 51,
+        "strict_agreement": 0.6455696202531646,
+        "balanced_accuracy": 0.4044384057971014,
+        "macro_f1": 0.3965734441924918,
+        "cohen_kappa": 0.22249560632688928,
+        "per_class": {
+          "적합": {
+            "support": 32,
+            "predicted": 17,
+            "true_positive": 11,
+            "precision": 0.6470588235294118,
+            "recall": 0.34375,
+            "f1": 0.4489795918367347
+          },
+          "검토": {
+            "support": 46,
+            "predicted": 62,
+            "true_positive": 40,
+            "precision": 0.6451612903225806,
+            "recall": 0.8695652173913043,
+            "f1": 0.7407407407407407
+          },
+          "부적합": {
+            "support": 1,
+            "predicted": 0,
+            "true_positive": 0,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        },
+        "confusion_rows_human_cols_rule": [
+          [
+            11,
+            21,
+            0
+          ],
+          [
+            6,
+            40,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ]
+        ],
+        "usable_binary_matches": 78,
+        "needs_review_detection": {
+          "tp": 41,
+          "fp": 21,
+          "fn": 6,
+          "tn": 11,
+          "precision": 0.6612903225806451,
+          "recall": 0.8723404255319149,
+          "routed_count": 62
+        }
+      },
+      "extra_routing_reasons": {
+        "검토": {
+          "count": 17,
+          "existing_non_OK": 12,
+          "existing_OK": 5
+        },
+        "부적합": {
+          "count": 0,
+          "existing_non_OK": 0,
+          "existing_OK": 0
+        },
+        "판단보류": {
+          "count": 0,
+          "existing_non_OK": 0,
+          "existing_OK": 0
+        },
+        "출력검증실패": {
+          "count": 9,
+          "existing_non_OK": 5,
+          "existing_OK": 4
+        }
+      },
+      "extra_routed": 26,
+      "extra_existing_non_OK": 17,
+      "extra_existing_OK": 9,
+      "judge_calls_in_simulated_policy": 43,
+      "sum_observed_call_costs_for_policy_subset": 1.742685
+    },
+    "rubric": {
+      "metrics": {
+        "n": 79,
+        "strict_matches": 52,
+        "strict_agreement": 0.6582278481012658,
+        "balanced_accuracy": 0.4085144927536232,
+        "macro_f1": 0.3971797884841363,
+        "cohen_kappa": 0.23902961113093102,
+        "per_class": {
+          "적합": {
+            "support": 32,
+            "predicted": 14,
+            "true_positive": 10,
+            "precision": 0.7142857142857143,
+            "recall": 0.3125,
+            "f1": 0.43478260869565216
+          },
+          "검토": {
+            "support": 46,
+            "predicted": 65,
+            "true_positive": 42,
+            "precision": 0.6461538461538462,
+            "recall": 0.9130434782608695,
+            "f1": 0.7567567567567568
+          },
+          "부적합": {
+            "support": 1,
+            "predicted": 0,
+            "true_positive": 0,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        },
+        "confusion_rows_human_cols_rule": [
+          [
+            10,
+            22,
+            0
+          ],
+          [
+            4,
+            42,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ]
+        ],
+        "usable_binary_matches": 78,
+        "needs_review_detection": {
+          "tp": 43,
+          "fp": 22,
+          "fn": 4,
+          "tn": 10,
+          "precision": 0.6615384615384615,
+          "recall": 0.9148936170212766,
+          "routed_count": 65
+        }
+      },
+      "extra_routing_reasons": {
+        "검토": {
+          "count": 15,
+          "existing_non_OK": 9,
+          "existing_OK": 6
+        },
+        "부적합": {
+          "count": 0,
+          "existing_non_OK": 0,
+          "existing_OK": 0
+        },
+        "판단보류": {
+          "count": 0,
+          "existing_non_OK": 0,
+          "existing_OK": 0
+        },
+        "출력검증실패": {
+          "count": 14,
+          "existing_non_OK": 10,
+          "existing_OK": 4
+        }
+      },
+      "extra_routed": 29,
+      "extra_existing_non_OK": 19,
+      "extra_existing_OK": 10,
+      "judge_calls_in_simulated_policy": 43,
+      "sum_observed_call_costs_for_policy_subset": 1.959957
+    }
+  },
+  "review_budget_exploration": {
+    "rule_priority": [
+      {
+        "budget_items": 10,
+        "expected_needs_review_found": 9.555555555555555,
+        "tie_min": 9,
+        "tie_max": 10,
+        "random_expected": 5.949367088607595
+      },
+      {
+        "budget_items": 20,
+        "expected_needs_review_found": 15.11111111111111,
+        "tie_min": 9,
+        "tie_max": 20,
+        "random_expected": 11.89873417721519
+      },
+      {
+        "budget_items": 40,
+        "expected_needs_review_found": 26.13953488372093,
+        "tie_min": 24,
+        "tie_max": 28,
+        "random_expected": 23.79746835443038
+      },
+      {
+        "budget_items": 60,
+        "expected_needs_review_found": 36.83720930232558,
+        "tie_min": 28,
+        "tie_max": 47,
+        "random_expected": 35.69620253164557
+      }
+    ],
+    "rubric_priority": [
+      {
+        "budget_items": 10,
+        "expected_needs_review_found": 7.5,
+        "tie_min": 4,
+        "tie_max": 10,
+        "random_expected": 5.949367088607595
+      },
+      {
+        "budget_items": 20,
+        "expected_needs_review_found": 15.0,
+        "tie_min": 14,
+        "tie_max": 18,
+        "random_expected": 11.89873417721519
+      },
+      {
+        "budget_items": 40,
+        "expected_needs_review_found": 30.0,
+        "tie_min": 26,
+        "tie_max": 34,
+        "random_expected": 23.79746835443038
+      },
+      {
+        "budget_items": 60,
+        "expected_needs_review_found": 42.869565217391305,
+        "tie_min": 42,
+        "tie_max": 46,
+        "random_expected": 35.69620253164557
+      }
+    ],
+    "prompt_disagreement_priority": [
+      {
+        "budget_items": 10,
+        "expected_needs_review_found": 7.5,
+        "tie_min": 6,
+        "tie_max": 10,
+        "random_expected": 5.949367088607595
+      },
+      {
+        "budget_items": 20,
+        "expected_needs_review_found": 15.0,
+        "tie_min": 12,
+        "tie_max": 16,
+        "random_expected": 11.89873417721519
+      },
+      {
+        "budget_items": 40,
+        "expected_needs_review_found": 28.363636363636363,
+        "tie_min": 27,
+        "tie_max": 30,
+        "random_expected": 23.79746835443038
+      },
+      {
+        "budget_items": 60,
+        "expected_needs_review_found": 44.0,
+        "tie_min": 44,
+        "tie_max": 44,
+        "random_expected": 35.69620253164557
+      }
+    ]
+  },
+  "budget_note": "Post-hoc ranking, uniform tie expectations, equal effort per item. Prompt disagreement uses two instruction variants of one model, not calibrated uncertainty or a replication of CoAnnotating.",
+  "hybrid_note": "Post-hoc routing simulation reusing the same model responses; abstentions/invalid outputs route to review, not asserted legal errors. Production data and labels remain unchanged.",
+  "response_integrity": {
+    "total": 158,
+    "statuses": {
+      "ok": 116,
+      "invalid_response": 42
+    },
+    "validation_errors": {
+      "quote_not_found_verbatim": 34,
+      "schema_invalid": 8
+    },
+    "schema_diagnostics": {
+      "maxLength:summary": 8
+    },
+    "quote_diagnostics": {
+      "not_verbatim_in_any_provided_chunk": 46,
+      "exact_in_cited_chunk": 271,
+      "present_in_different_provided_chunk": 2
+    }
+  },
+  "execution": {
+    "records": 158,
+    "valid": 116,
+    "invalid_or_failed": 42,
+    "estimated_usd": 6.823158,
+    "usage_unavailable_requests": 0,
+    "cost_note": "Token-based estimate using published rates; not an invoice. Failed requests without usage are reported separately."
+  },
+  "comparison_limit": "Prompt comparison uses identical source chunks. Rule vs judge also differs in evidence context, so differences cannot be attributed solely to the model.",
+  "quote_check_limit": "Substring and source-ID checks establish quotation presence only, not legal support or correct entailment."
+}

@@ -1,0 +1,23 @@
+{
+  "experiment": "judge-dev-v1",
+  "model": "claude-sonnet-4-6",
+  "temperature": 0,
+  "thinking": "disabled",
+  "max_output_tokens": 1800,
+  "inputs_sha256": "1c2b06c034cbac4fcb198f18aca16a6de862fa285671740824aba989582cb326",
+  "prompts_sha256": {
+    "common": "a6454627f4553bea29911f72f1809d396c47b827f4122c1c1f502ad7fdc3d520",
+    "generic": "8d3cffb66fb49185a99c739d7cf4a0f812dccc9dddc9e047e71f6f283b614a63",
+    "rubric": "ac3dcb366e122b8549e238d210286dea2429c424afd910935c5bcfaa92ad08c2"
+  },
+  "schema_sha256": "7bfaebaaf0eebac65957b1ecd790b9adeb085c44566fe8676e4b079a06af985b",
+  "sdk_version": "0.109.2",
+  "runner_sha256": "07e663bec0526f91ce242e8d1bc31c0f8a129fdeb2ab291702c96bffc1f5c844",
+  "budget_usd": 12.0,
+  "price_input_per_million": 3,
+  "price_output_per_million": 15,
+  "pricing_source": "https://platform.claude.com/docs/en/models/sonnet-4-6/overview",
+  "pricing_checked": "2026-11-01",
+  "label_exposure": "None in requests; all items previously inspected by rubric developer.",
+  "max_retries": 0
+}

@@ -7,6 +7,7 @@ __pycache__/
 .env
 /research/review100/private/
 /research/review100/results/
+/research/judge/local/
 .streamlit/secrets.toml
 
 # Local configuration, credentials, caches, and duplicate working copies
