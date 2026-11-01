@@ -8,8 +8,8 @@ Batch Processor v1 — 22건 5단 v2 일괄 처리
   python3 batch_processor_v1.py --execute --limit 1        # 1건만 (smoke test)
 
 저장 위치 (사건키별):
-  04_raw_outputs/{사건키}/facts.json     ← Opus 4.7 (fallback Sonnet 4.6)
-  04_raw_outputs/{사건키}/legal.json     ← Opus 4.7 (fallback Sonnet 4.6)
+  04_raw_outputs/{사건키}/facts.json     ← Opus 4.8 (fallback Sonnet 4.6)
+  04_raw_outputs/{사건키}/legal.json     ← Opus 4.8 (fallback Sonnet 4.6)
   04_raw_outputs/{사건키}/sanction.json  ← Sonnet 4.6
   04_raw_outputs/{사건키}/evidence.json  ← Sonnet 4.6
   04_raw_outputs/{사건키}/qa_list.json   ← Sonnet 4.6 (45개 Q&A)
@@ -50,7 +50,7 @@ STEPS = [
 ]
 
 MODELS = {
-    "opus":   "claude-opus-4-7",
+    "opus":   "claude-opus-4-8",
     "sonnet": "claude-sonnet-4-6",
 }
 OPUS_FALLBACK_TIER = "sonnet"
@@ -421,7 +421,9 @@ def _get_client():
     global _ANTHROPIC_CLIENT
     if _ANTHROPIC_CLIENT is None:
         from anthropic import Anthropic
-        _ANTHROPIC_CLIENT = Anthropic()
+        # 환경변수에 trailing newline/공백이 섞이면 헤더가 깨져 APIConnectionError 발생 → strip 방어
+        key = (os.environ.get("ANTHROPIC_API_KEY") or "").strip()
+        _ANTHROPIC_CLIENT = Anthropic(api_key=key) if key else Anthropic()
     return _ANTHROPIC_CLIENT
 
 
@@ -724,44 +726,48 @@ def save_failure(case_key: str, msg: str):
 
 
 # ============================ CASE PROCESS ============================
-def process_case(row: dict, inv_idx: dict, dry_run: bool) -> bool:
-    case_key = row["사건키"].strip()
-    case_dir_name = safe_dirname(case_key)
-    case_dir = OUTPUT_DIR / case_dir_name
+# STEPS 출력파일 → single_pdf_pipeline 반환 dict 키 매핑
+RETURN_KEYS = {
+    "facts.json": "facts",
+    "legal.json": "legal",
+    "sanction.json": "sanction",
+    "evidence.json": "evidence",
+    "qa_list.json": "qa",
+}
 
-    inv = inv_idx.get(case_key)
-    if inv is None:
-        log(f"[INV-MISS] {case_key} not in inventory_full.csv")
-        return False
 
-    pdf_path = Path(inv["PDF경로"].strip())
-    meta_path = find_metadata_path(pdf_path)
-    hybrid_path = find_hybrid_path(pdf_path)
+def _load_case_outputs(case_dir: Path) -> dict:
+    """case_dir의 5단 산출 json을 파싱해 {facts,legal,sanction,evidence,qa} 반환.
+    누락 파일은 키 생략."""
+    out = {}
+    for out_name, key in RETURN_KEYS.items():
+        p = case_dir / out_name
+        if p.exists():
+            try:
+                out[key] = json.loads(p.read_text(encoding="utf-8"))
+            except Exception as e:
+                log(f"[WARN] {case_dir.name}/{out_name} 파싱 실패: {e}")
+    return out
 
-    skip_marker = case_dir / SKIP_MARKER
-    if skip_marker.exists() and not dry_run:
-        log(f"[SKIP] {case_key} (qa_list.json exists)")
-        return True
 
-    if dry_run:
-        log(f"[DRY] {case_key}")
-        log(f"      PDF    : {'OK ' if pdf_path.exists() else 'MISS'} {pdf_path}")
-        log(f"      META   : {'OK ' if meta_path else 'MISS'} {meta_path or '(searched: .json / metadata/)'}")
-        log(f"      HYBRID : {'OK ' if hybrid_path else 'MISS'} {hybrid_path or '(searched: .hybrid.json / hybrid/)'}")
-        log(f"      OUTDIR : {case_dir}")
-        return True
+def decompose_to_dir(case_key: str, case_dir: Path, pdf_path: Path) -> dict | None:
+    """1건 5단 분해 핵심 루프 (process_case·single_pdf_pipeline 공유).
 
+    PDF·metadata·hybrid 로드 → STEPS 순차 실행(기존 파일 있으면 재호출 없이 로드) →
+    검증. 반환: {facts,legal,sanction,evidence,qa} 파싱 dict, 실패 시 None.
+    hybrid 부재 시 Step4(근거매칭)는 빈 hybrid로 진행(중단 금지) — degrade.
+    """
     case_dir.mkdir(parents=True, exist_ok=True)
 
     if not pdf_path.exists():
         save_failure(case_key, f"PDF not found: {pdf_path}")
-        return False
+        return None
 
     try:
         pdf_text = read_pdf(pdf_path)
     except Exception as e:
         save_failure(case_key, f"PDF read failed: {type(e).__name__}: {e}")
-        return False
+        return None
 
     # PDF 본문 상한 적용 — Tier 1 ITPM 30K 초과 방지
     if len(pdf_text) > PDF_MAX_CHARS:
@@ -769,25 +775,27 @@ def process_case(row: dict, inv_idx: dict, dry_run: bool) -> bool:
         pdf_text = pdf_text[:PDF_MAX_CHARS]
         log(f"[PDF-TRUNC] {case_key} {original_len:,}자 → {PDF_MAX_CHARS:,}자 (절감 {original_len - PDF_MAX_CHARS:,}자)")
 
+    meta_path = find_metadata_path(pdf_path)
     try:
         metadata_str = meta_path.read_text(encoding="utf-8") if meta_path else ""
     except Exception as e:
         log(f"[WARN] {case_key} metadata read failed: {e} — empty 처리 후 계속")
         metadata_str = ""
 
-    # metadata 상한 적용 — 11개 피심인 등 큰 metadata.json (조달청 17K) ITPM 초과 방지
     if len(metadata_str) > META_MAX_CHARS:
         original_len = len(metadata_str)
         metadata_str = metadata_str[:META_MAX_CHARS]
         log(f"[META-TRUNC] {case_key} {original_len:,}자 → {META_MAX_CHARS:,}자 (절감 {original_len - META_MAX_CHARS:,}자)")
 
+    hybrid_path = find_hybrid_path(pdf_path)
     try:
         hybrid_str = hybrid_path.read_text(encoding="utf-8") if hybrid_path else ""
     except Exception as e:
         log(f"[WARN] {case_key} hybrid read failed: {e} — empty 처리 후 계속")
         hybrid_str = ""
+    if not hybrid_path:
+        log(f"[DEGRADE] {case_key} hybrid.json 부재 — Step4 chunk_id 없이 원문 매칭으로 진행")
 
-    # hybrid_chunks 상위 N개로 잘라 프롬프트 토큰 절감 (대형 의결서 대비)
     if hybrid_str:
         truncated_str, total, kept = truncate_hybrid_chunks(hybrid_str)
         if total > 0 and kept > 0 and total != kept:
@@ -818,23 +826,21 @@ def process_case(row: dict, inv_idx: dict, dry_run: bool) -> bool:
         prompt_path = PROMPT_DIR / prompt_name
         if not prompt_path.exists():
             save_failure(case_key, f"prompt missing: {prompt_path}")
-            return False
+            return None
 
         if step_var == "qa_list":
             result, used_model = run_qa_list_split(prompt_path, variables, tier, case_key, case_dir)
         else:
-            # render_prompt가 PDF·meta 사용 여부를 판단하여 placeholder marker로 교체
             prompt_body, has_pdf, has_meta = render_prompt(prompt_path, variables)
-            pdf_arg  = pdf_text     if has_pdf  else ""
+            pdf_arg = pdf_text if has_pdf else ""
             meta_arg = metadata_str if has_meta else ""
             result, used_model = run_step_with_retry(
                 step_var, prompt_body, pdf_arg, meta_arg, tier, case_key,
             )
         if result is None:
             save_failure(case_key, f"{step_var} failed after retries")
-            return False
+            return None
 
-        # 디렉토리 재보강 — macOS Unicode 정규화 등으로 case_dir.mkdir이 누락된 케이스 방어
         out_path.parent.mkdir(parents=True, exist_ok=True)
         out_path.write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
         variables[step_var] = json.dumps(result, ensure_ascii=False)
@@ -854,7 +860,62 @@ def process_case(row: dict, inv_idx: dict, dry_run: bool) -> bool:
         log(f"[VALIDATE] {case_key} :: {' | '.join(issues)}")
     else:
         log(f"[VALIDATE-OK] {case_key}")
-    return True
+
+    return _load_case_outputs(case_dir)
+
+
+def single_pdf_pipeline(pdf_path, force: bool = False) -> dict | None:
+    """신규 PDF 1건 실시간 5단 분해 (오더 #3 작업 2).
+
+    입력 : PDF 경로 (str|Path). {사건키}_metadata.json·{사건키}_hybrid.json 자동 탐색.
+    출력 : {facts,legal,sanction,evidence,qa} dict + 04_raw_outputs/{사건키}/*.json 저장.
+    캐시 : 사건키 디렉토리에 5단 산출이 모두 있으면 API 재호출 없이 로드(force=True 시 무시).
+    모델 : 기존 MODELS(opus=4.8/sonnet=4.6)·OPUS_FALLBACK_TIER·prompt caching 그대로.
+    """
+    pdf_path = Path(pdf_path)
+    case_key = pdf_path.stem.strip()
+    case_dir = OUTPUT_DIR / safe_dirname(case_key)
+
+    if not force and case_dir.exists():
+        have = [n for n in RETURN_KEYS if (case_dir / n).exists()]
+        if len(have) == len(RETURN_KEYS):
+            log(f"[CACHE] {case_key} — 5단 산출 전부 존재, API 재호출 없이 로드")
+            return _load_case_outputs(case_dir)
+        if have:
+            log(f"[RESUME] {case_key} — {len(have)}/{len(RETURN_KEYS)}단 존재, 나머지만 생성")
+
+    return decompose_to_dir(case_key, case_dir, pdf_path)
+
+
+def process_case(row: dict, inv_idx: dict, dry_run: bool) -> bool:
+    case_key = row["사건키"].strip()
+    case_dir_name = safe_dirname(case_key)
+    case_dir = OUTPUT_DIR / case_dir_name
+
+    inv = inv_idx.get(case_key)
+    if inv is None:
+        log(f"[INV-MISS] {case_key} not in inventory_full.csv")
+        return False
+
+    pdf_path = Path(inv["PDF경로"].strip())
+    meta_path = find_metadata_path(pdf_path)
+    hybrid_path = find_hybrid_path(pdf_path)
+
+    skip_marker = case_dir / SKIP_MARKER
+    if skip_marker.exists() and not dry_run:
+        log(f"[SKIP] {case_key} (qa_list.json exists)")
+        return True
+
+    if dry_run:
+        log(f"[DRY] {case_key}")
+        log(f"      PDF    : {'OK ' if pdf_path.exists() else 'MISS'} {pdf_path}")
+        log(f"      META   : {'OK ' if meta_path else 'MISS'} {meta_path or '(searched: .json / metadata/)'}")
+        log(f"      HYBRID : {'OK ' if hybrid_path else 'MISS'} {hybrid_path or '(searched: .hybrid.json / hybrid/)'}")
+        log(f"      OUTDIR : {case_dir}")
+        return True
+
+    # 공유 헬퍼로 위임 (single_pdf_pipeline과 동일 본문) — 성공 시 dict, 실패 시 None
+    return decompose_to_dir(case_key, case_dir, pdf_path) is not None
 
 
 # ============================ MAIN ============================

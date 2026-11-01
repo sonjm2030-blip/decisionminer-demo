@@ -1,0 +1,122 @@
+{
+  "snapshot": "competition-baseline",
+  "inventory_rows": 500,
+  "locked_cases": 22,
+  "qa_rows": 990,
+  "unique_qa_ids": 990,
+  "qa_case_count": 22,
+  "qa_per_case": {
+    "45": 22
+  },
+  "metadata_rows": {
+    "summary": 22,
+    "facts": 22,
+    "classification": 22,
+    "inference": 22
+  },
+  "final_tiers": {
+    "검토": 768,
+    "부적합": 27,
+    "적합": 195
+  },
+  "legacy_csv_tiers": {
+    "Gold": 148,
+    "보정필요": 829,
+    "탈락": 13
+  },
+  "raw_qa_case_count": 22,
+  "raw_qa_count": 990,
+  "missing_sidecars": [],
+  "review_rows": 100,
+  "raw_review_rows": 100,
+  "review_correction_csv_rows": 63,
+  "legacy_agreement": {
+    "n": 100,
+    "strict_matches": 55,
+    "binary_matches": 99,
+    "historical_direction_matches": 88,
+    "matrix": [
+      {
+        "automatic": "Gold",
+        "human": "OK",
+        "n": 4
+      },
+      {
+        "automatic": "Gold",
+        "human": "보정필요",
+        "n": 11
+      },
+      {
+        "automatic": "Gold",
+        "human": "환각",
+        "n": 1
+      },
+      {
+        "automatic": "보정필요",
+        "human": "OK",
+        "n": 33
+      },
+      {
+        "automatic": "보정필요",
+        "human": "보정필요",
+        "n": 50
+      },
+      {
+        "automatic": "탈락",
+        "human": "환각",
+        "n": 1
+      }
+    ]
+  },
+  "final_static_agreement": {
+    "n": 100,
+    "strict_matches": 55,
+    "binary_matches": 98,
+    "historical_direction_matches": null,
+    "matrix": [
+      {
+        "automatic": "검토",
+        "human": "OK",
+        "n": 30
+      },
+      {
+        "automatic": "검토",
+        "human": "보정필요",
+        "n": 47
+      },
+      {
+        "automatic": "부적합",
+        "human": "보정필요",
+        "n": 1
+      },
+      {
+        "automatic": "부적합",
+        "human": "환각",
+        "n": 1
+      },
+      {
+        "automatic": "적합",
+        "human": "OK",
+        "n": 7
+      },
+      {
+        "automatic": "적합",
+        "human": "보정필요",
+        "n": 13
+      },
+      {
+        "automatic": "적합",
+        "human": "환각",
+        "n": 1
+      }
+    ]
+  },
+  "training_evaluation_overlap": "Same underlying QA pool; not independent train/test splits",
+  "input_sha256": {
+    "releases/competition_final.xlsx": "11f31566e2b2e1caf6f7722c63dec9e47c37923de99f1035fae943c5c802001b",
+    "releases/reviewer_100.xlsx": "6fbaa0ca0d9fe05db83434314e18b6405830d04900700e7a7ceeec4b6ca8a940",
+    "11_data_quality/qa_evaluated_990.csv": "a2ed888fc04433d1df4104b721fe8b85438aaee6a31f3c533eba0d8712aea707",
+    "11_data_quality/qc_result_990_v2.csv": "6b86e0e09c981dbf11a5654098449d3ad5f237954d48e5a71ea8eac6cf0f2c1e",
+    "11_data_quality/static_labels_990.json": "34a61c93cd5bea78fe2bf5f3cef4b56d6214a5cbd859ba89eba2f687c2c5e415"
+  }
+}

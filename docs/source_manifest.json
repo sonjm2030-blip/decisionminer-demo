@@ -1,0 +1,112 @@
+{
+  "files": [
+    {
+      "destination": "web_demo/server.py",
+      "source_name": "server.py",
+      "source_group": "2차 공모전 자료",
+      "sha256": "79b804802ef6334576626a387fbab1b54cbe34fac9233429fdedcc7288fb0298",
+      "role": "2차 시연 코드 원본 보존"
+    },
+    {
+      "destination": "web_demo/index.html",
+      "source_name": "index.html",
+      "source_group": "2차 공모전 자료",
+      "sha256": "4c9deb5c6c5e259b0e6ae78017a5818cd493652449d4536cc8df1755bd2cac00",
+      "role": "2차 시연 코드 원본 보존"
+    },
+    {
+      "destination": "web_demo/DecisionMiner_web_v4.jsx",
+      "source_name": "DecisionMiner_web_v4.jsx",
+      "source_group": "2차 공모전 자료",
+      "sha256": "c0a05bda42c00ed6ed7e53810d19228a044d2868d3041c32897274d84dd14942",
+      "role": "2차 시연 코드 원본 보존"
+    },
+    {
+      "destination": "web_demo/requirements.txt",
+      "source_name": "requirements.txt",
+      "source_group": "2차 공모전 자료",
+      "sha256": "979c02d3ff03ea608284320b381f0803872a8d347b7949f89aaa8826d30344c7",
+      "role": "2차 시연 코드 원본 보존"
+    },
+    {
+      "destination": "web_demo/Dockerfile",
+      "source_name": "Dockerfile",
+      "source_group": "2차 공모전 자료",
+      "sha256": "0bb11064cfec483f30302e121787a8dbf0c127041aa808d53868e8777ea4b6ea",
+      "role": "2차 시연 코드 원본 보존"
+    },
+    {
+      "destination": "web_demo/DEPLOY.md",
+      "source_name": "DEPLOY.md",
+      "source_group": "2차 공모전 자료",
+      "sha256": "3d957a47e0547d1dd372ea1bdbec5e615aab9525bfed878522e87869a61ca3b4",
+      "role": "2차 시연 코드 원본 보존"
+    },
+    {
+      "destination": "releases/competition_final.xlsx",
+      "source_name": "학습데이터_설계서_최종.xlsx",
+      "source_group": "2차 공모전 자료",
+      "sha256": "11f31566e2b2e1caf6f7722c63dec9e47c37923de99f1035fae943c5c802001b",
+      "role": "최종 제출 설계서 원본 보존"
+    },
+    {
+      "destination": "releases/reviewer_100.xlsx",
+      "source_name": "최종 학습데이터_설계서_구조_v3.4_B용_4차검수_0507 (1).xlsx",
+      "source_group": "기존 저장소",
+      "sha256": "6fbaa0ca0d9fe05db83434314e18b6405830d04900700e7a7ceeec4b6ca8a940",
+      "role": "기존 100건 검수 원본 보존"
+    }
+  ],
+  "restored_sidecars": [
+    {
+      "destination": "04_raw_outputs/경상북도교육청 발주 2018년 업무용 표준오피스 소프트웨어 연간사용권 구매 입찰 관련 4개 사업자의 부당한 공동행위에 대한 건/facts.json",
+      "source_directory": "04_raw_outputs/경상북도교육청 발주 2018년 업무용 표준오피스 소프트웨어 연간사용권 구매 입찰 ",
+      "sha256": "ec6dad6deeb25788b38a7c56dd8a4791c2900025c5e03a0106ae1f1bb8f10781"
+    },
+    {
+      "destination": "04_raw_outputs/경상북도교육청 발주 2018년 업무용 표준오피스 소프트웨어 연간사용권 구매 입찰 관련 4개 사업자의 부당한 공동행위에 대한 건/legal.json",
+      "source_directory": "04_raw_outputs/경상북도교육청 발주 2018년 업무용 표준오피스 소프트웨어 연간사용권 구매 입찰 ",
+      "sha256": "086f31c71315f21d5a3677648604fb668fac57031f8f2fe48c7c5a0d0ed35de5"
+    },
+    {
+      "destination": "04_raw_outputs/경상북도교육청 발주 2018년 업무용 표준오피스 소프트웨어 연간사용권 구매 입찰 관련 4개 사업자의 부당한 공동행위에 대한 건/sanction.json",
+      "source_directory": "04_raw_outputs/경상북도교육청 발주 2018년 업무용 표준오피스 소프트웨어 연간사용권 구매 입찰 ",
+      "sha256": "fe13241b6e4ced571e29f451b4fb72d5e405c887511801a8b7dfc1d6da503591"
+    },
+    {
+      "destination": "04_raw_outputs/경상북도교육청 발주 2018년 업무용 표준오피스 소프트웨어 연간사용권 구매 입찰 관련 4개 사업자의 부당한 공동행위에 대한 건/evidence.json",
+      "source_directory": "04_raw_outputs/경상북도교육청 발주 2018년 업무용 표준오피스 소프트웨어 연간사용권 구매 입찰 ",
+      "sha256": "52fdc28aff3f05956d31ffd2096c4d14bb784c7f226965267d40b3a7c1992588"
+    },
+    {
+      "destination": "04_raw_outputs/기업집단 금호아시아나 소속 계열회사들의 특수관계인에 대한 부당이익제공행위 및 부당지원행위에 대한 건/facts.json",
+      "source_directory": "04_raw_outputs/기업집단 금호아시아나 소속 계열회사들의 특수관계인에 대한 부당이익제공행위",
+      "sha256": "9b94973e7b49e96f62d311b9da6cf2c286a2b0f51bf2db0f859117c6810b022d"
+    },
+    {
+      "destination": "04_raw_outputs/기업집단 금호아시아나 소속 계열회사들의 특수관계인에 대한 부당이익제공행위 및 부당지원행위에 대한 건/legal.json",
+      "source_directory": "04_raw_outputs/기업집단 금호아시아나 소속 계열회사들의 특수관계인에 대한 부당이익제공행위",
+      "sha256": "b913aa1175a09d1d5932446d7bfbb9ca682648c4a4670884dcfd52bf82479d7b"
+    },
+    {
+      "destination": "04_raw_outputs/기업집단 금호아시아나 소속 계열회사들의 특수관계인에 대한 부당이익제공행위 및 부당지원행위에 대한 건/sanction.json",
+      "source_directory": "04_raw_outputs/기업집단 금호아시아나 소속 계열회사들의 특수관계인에 대한 부당이익제공행위",
+      "sha256": "3632a51a3f1d069010a413d376758e08bb77a95324d54e45c0f4afa522fe06a0"
+    },
+    {
+      "destination": "04_raw_outputs/새마을금고중앙회 발주 공제사업 마케팅 교육 및 컨설팅 용역 입찰 관련 3개 사업자의 부당한 공동행위에 대한 건/facts.json",
+      "source_directory": "04_raw_outputs/새마을금고중앙회 발주 공제사업 마케팅 교육 및 컨설팅 용역 입찰 관련 3개 사",
+      "sha256": "9b580b5bbffbba85a10340f79c25ee8a7d04d601a33eb059b6c99e77c902ba29"
+    },
+    {
+      "destination": "04_raw_outputs/새마을금고중앙회 발주 공제사업 마케팅 교육 및 컨설팅 용역 입찰 관련 3개 사업자의 부당한 공동행위에 대한 건/legal.json",
+      "source_directory": "04_raw_outputs/새마을금고중앙회 발주 공제사업 마케팅 교육 및 컨설팅 용역 입찰 관련 3개 사",
+      "sha256": "15c55ed44684234f6509e7fec55b0bb77115817263171e7efc17cb8f30eb5974"
+    },
+    {
+      "destination": "04_raw_outputs/새마을금고중앙회 발주 공제사업 마케팅 교육 및 컨설팅 용역 입찰 관련 3개 사업자의 부당한 공동행위에 대한 건/sanction.json",
+      "source_directory": "04_raw_outputs/새마을금고중앙회 발주 공제사업 마케팅 교육 및 컨설팅 용역 입찰 관련 3개 사",
+      "sha256": "6788589ba965a590c2190e4a4a340a35a0bc0c8c124d0beac47c5807a80220a7"
+    }
+  ]
+}

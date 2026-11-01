@@ -6,3 +6,24 @@ __pycache__/
 *.log
 .env
 .streamlit/secrets.toml
+
+# Local configuration, credentials, caches, and duplicate working copies
+.claude/
+.env.*
+!.env.example
+*.bak
+*.bak.*
+*.backup.*
+.pytest_cache/
+00_meta/batch_log.txt
+00_meta/tier1_col17_log.txt
+04_raw_outputs/_failed/
+/학습데이터_설계서_DecisionMiner_v2_6.xlsx
+/05_xlsx/학습데이터_설계서_DecisionMiner_v2_7.xlsx
+/제출_패키지/학습데이터_설계서_DecisionMiner_v2_7.xlsx
+
+# Sidecars restored to the complete case names; preserve duplicate originals locally
+/04_raw_outputs/기업집단 금호아시아나 소속 계열회사들의 특수관계인에 대한 부당이익제공행위/
+/04_raw_outputs/경상북도교육청 발주 2018년 업무용 표준오피스 소프트웨어 연간사용권 구매 입찰 /
+/04_raw_outputs/에스피피조선/
+/04_raw_outputs/새마을금고중앙회 발주 공제사업 마케팅 교육 및 컨설팅 용역 입찰 관련 3개 사/
