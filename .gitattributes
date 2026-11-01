@@ -1,0 +1,3 @@
+# These CSVs retain original reviewer cell text, including end-of-line spaces.
+research/legacy_review/existing_review100.csv whitespace=-blank-at-eol
+research/legacy_review/proposed_correction_pairs61.csv whitespace=-blank-at-eol
