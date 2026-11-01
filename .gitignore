@@ -5,6 +5,8 @@ __pycache__/
 .DS_Store
 *.log
 .env
+/research/review100/private/
+/research/review100/results/
 .streamlit/secrets.toml
 
 # Local configuration, credentials, caches, and duplicate working copies
